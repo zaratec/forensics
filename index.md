@@ -33,4 +33,4 @@ below.
 **Note:**
 If you've come here looking for MiniCTF and web exploitation problems, we've 
 unfortunately taken it down, but you are welcome to check out the files for 
-[the platform](https://github.com/zaratec/miniCTF-platform) and [challenges](https://github.com/zwade/minictf).
+[the platform](https://github.com/zaratec/miniCTF-platform) and [challenges](https://github.com/zwade/minictf). :)
