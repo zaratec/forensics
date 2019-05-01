@@ -53,9 +53,7 @@ and the accompanying flag.
 
 **Part 2**
 
-`
-$ grep -i [file/partition] “picoCTF“
-`
+`$ grep -i [file/partition] “picoCTF“`
 
 **Part 3**
 
@@ -68,9 +66,7 @@ Use bless or other hex editor to re-insert missing piece
 
 **Part 4**
 
-`
-TBD
-`
+`TBD`
 
 
 
@@ -96,9 +92,7 @@ Use bless or other hex editor to re-insert missing piece
 
 **Part 2**
 
-`
-TBD
-`
+`TBD`
 
 
 ### ext3
@@ -123,9 +117,7 @@ Ext3 block + inode size:
 
 **Part 2**
 
-`
-$ strings [file/partition]
-`
+`$ strings [file/partition]`
 
 **Part 3**
 
@@ -177,9 +169,7 @@ $ file.0x1f8c6000.data0.dmp
 
 **Part 4**
 
-`
-$ volatility -f memtutorial.mem --profile=Win7SP1x86 clipboard
-`
+`$ volatility -f memtutorial.mem --profile=Win7SP1x86 clipboard`
 
 **Part 5**
 
