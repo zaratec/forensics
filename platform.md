@@ -9,6 +9,8 @@ make the challenge generation portable across operating systems.
 
 # Setup Instructions
 
+[The release file are published on the GitHub repo](https://github.com/zaratec/forensics/releases/).
+
 1. **Install Docker:** [Instructions 
 to download and set up Docker can be found here](https://docs.docker.com/v17.12/install/).
 2. **Build the Docker image:** Run `docker build . -t forensic`
