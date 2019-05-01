@@ -16,7 +16,8 @@ import shutil
 BUILD_PATH = "/root/"
 IMAGE_NAME = "hdd.img"
 MOUNT_PATH = "/mnt/hddp"
-CONTENT_PATH = "/forensics/content/"
+SHARED_DIR = "/forensics"
+CONTENT_PATH = os.path.join(SHARED_DIR, "content")
 
 PARTITIONS = ["ntfs", "fat", "ext3"]
 SECTOR_START = 2048
@@ -221,8 +222,6 @@ def gen_image():
     print("*****************************************")
     print("**    CHALLENGE CREATION SUCCESSFUL    **")
     print("*****************************************")
-    print("Challenge flags output to flags.txt")
-    print("")
 
     with open("flags.txt", "w+") as f:
         for k,v in challenges.items():
@@ -233,13 +232,20 @@ def gen_image():
                 f.write("File location: {}\n".format(new_path_out))
             f.write("\n")
 
+    print("Challenge flags output to flags.txt")
+    print("Moving challenge file to shared folder")
+
+    shutil.move(os.path.join(BUILD_PATH, IMAGE_NAME), os.path.join(SHARED_DIR, IMAGE_NAME))
+
+    print("Challenge file moved to shared folder as {}".format(IMAGE_NAME))
+    print("")
+
 
 
 def ntfs_file_recovery(flag, path_in, path_out):
     add_flag_to_image(path_in, path_out, flag)
     # os.system("cp {} {}".format(path_in, path_out))
     os.system("rm -f {}".format(path_out))
-
 
 
 def ntfs_strings(flag, path_out): 

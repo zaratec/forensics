@@ -1,2 +1,3 @@
 *.img
 *~
+docker/flags.txt
