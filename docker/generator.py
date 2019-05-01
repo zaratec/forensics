@@ -155,11 +155,6 @@ def gen_image():
             challenges["ntfs_file_recovery"]["path_out"] = os.path.join(str(random.choice(tree_dirs)),challenge_file)
             ntfs_file_recovery(challenges["ntfs_file_recovery"]["flag"], os.path.join(CONTENT_PATH,"image",challenge_file), challenges["ntfs_file_recovery"]["path_out"])
 
-            challenges["ntfs_strings"] = {}
-            challenges["ntfs_strings"]["flag"] = gen_flag()
-            challenges["ntfs_strings"]["path_out"] = os.path.join(str(random.choice(tree_dirs)), gen_filename())
-            ntfs_strings(challenges["ntfs_strings"]["flag"], challenges["ntfs_strings"]["path_out"])
-
             challenges["ntfs_grep"] = {}
             challenges["ntfs_grep"]["flag"] = gen_flag()
             challenges["ntfs_grep"]["path_out"] = os.path.join(str(random.choice(tree_dirs)), gen_filename())
@@ -201,6 +196,11 @@ def gen_image():
             challenge_file = pick_content(type="image", ext="jpg")
             challenges["ext3_img_metadata"]["path_out"] = os.path.join(str(random.choice(tree_dirs)), challenge_file)
             ext3_img_metadata(challenges["ext3_img_metadata"]["flag"], os.path.join(CONTENT_PATH, "image", challenge_file), challenges["ext3_img_metadata"]["path_out"])
+
+            challenges["ext3_strings"] = {}
+            challenges["ext3_strings"]["flag"] = gen_flag()
+            challenges["ext3_strings"]["path_out"] = os.path.join(str(random.choice(tree_dirs)), gen_filename())
+            ext3_strings(challenges["ext3_strings"]["flag"], challenges["ext3_strings"]["path_out"])
 
         else:
             print("Unsupported partition type")
@@ -248,7 +248,7 @@ def ntfs_file_recovery(flag, path_in, path_out):
     os.system("rm -f {}".format(path_out))
 
 
-def ntfs_strings(flag, path_out): 
+def ext3_strings(flag, path_out): 
     # Read data from rnd, save as file
     with open("/dev/random", "rb") as f:
         bin_data = f.read(random.randint(6000,10000))
