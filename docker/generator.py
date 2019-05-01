@@ -257,11 +257,12 @@ def ntfs_file_recovery(flag, path_in, path_out):
 
 def ext3_strings(flag, path_out): 
     # Read data from rnd, save as file
-    with open("/dev/random", "rb") as f:
-        bin_data = f.read(random.randint(6000,10000))
-
+    #with open("/dev/random", "rb") as f:
+    #    bin_data = f.read(random.randint(6000,10000))
+    bin_data = ''.join(chr(random.randint(0,255)) for i in range(random.randint(6000,10000)))
+        
     with open(path_out, "wb+") as f:
-        f.write(bin_data)
+        f.write(bin_data.encode('latin-1'))
         f.seek(0,2)
         size = f.tell()	
         random_loc = random.randrange(0, size-len(flag))
