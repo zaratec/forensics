@@ -111,23 +111,30 @@ def gen_image():
     challenges = {}
     for i in range(len(PARTITIONS)):
         # Set up partition as loop device to change fs type
+        # print("losetup --offset $((512*{})) --sizelimit $((512*{})) --show --find {}".format(p_info[i][0], p_info[i][1], image_path))
+        # print(' '.join(s for s in ["losetup", "--offset", str(512 * p_info[i][0]), "--sizelimit", str(512 * p_info[i][1]), "--show", "--find", image_path]))
         # p = Popen(["losetup", "--offset", str(512 * p_info[i][0]), str(512 * p_info[i][1]), "--show", "--find", image_path])
         # print(p.communicate())
-        r = os.system("losetup --offset $((512*{})) --sizelimit $((512*{})) --show --find {}".format(p_info[i][0], p_info[i][1], image_path))
-        assert(r == 0)
+        # r = os.system("losetup --offset $((512*{})) --sizelimit $((512*{})) --show --find {}".format(p_info[i][0], p_info[i][1], image_path))
+        # r = os.system("losetup --offset {} --sizelimit {} --show --find {}".format(p_info[i][0]*512, p_info[i][1]*512, image_path))
+        p = Popen(["losetup", "--offset", str(p_info[i][0]*512), "--sizelimit", str(p_info[i][1]*512), "--show", "--find", image_path], stdout=PIPE, stdin=PIPE, stderr=STDOUT)
+        p_res = p.communicate()
+        loop_dev = p_res[0].decode('latin-1').strip()
+        print(loop_dev)
+        # assert(r == 0)
 
         slack_begin = sz_count + 1
         slack_end = SECTOR_END
 
         # Change fs type
         if PARTITIONS[i] == "ntfs":
-            r = os.system("mkfs.ntfs /dev/loop0")
+            r = os.system("mkfs.ntfs {}".format(loop_dev))
             assert(r == 0)
         elif PARTITIONS[i] == "fat":
-            r = os.system("mkfs.fat /dev/loop0")
+            r = os.system("mkfs.fat {}".format(loop_dev))
             assert(r == 0)
         elif PARTITIONS[i] == "ext3":
-            r = os.system("mkfs.ext3 /dev/loop0")
+            r = os.system("mkfs.ext3 {}".format(loop_dev))
             assert(r == 0)
         else:
             print("Unsupported FS")
@@ -137,7 +144,7 @@ def gen_image():
         # Mount partition
         r = os.system("mkdir -p {}".format(MOUNT_PATH))
         assert(r == 0)
-        r = os.system("mount /dev/loop0 {}".format(MOUNT_PATH))
+        r = os.system("mount {} {}".format(loop_dev, MOUNT_PATH))
         assert(r == 0)
 
         # ===== Do stuff to fs of partition @ /mnt/hddp =====
@@ -209,7 +216,7 @@ def gen_image():
         # Unmount partition & loop device
         r = os.system("umount /mnt/hddp")
         assert(r == 0)
-        r = os.system("losetup -d /dev/loop0")
+        r = os.system("losetup -d {}".format(loop_dev))
         assert(r == 0)
 
 
