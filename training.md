@@ -126,9 +126,7 @@ Ext3 block + inode size:
 $ strings [file/partition]
 `
 
------
-
-## Image 2: Android Memory
+## Image 2: Android Memory [memtutorial.mem](https://drive.google.com/open?id=1lMeYoRuGCsSjOfiYNUK4ieR8HUIX0elW)
 
 ### Setup
 The challenge is a bit bigger, so you'll have to [download it and its generator script from Google Drive](https://drive.google.com/open?id=1NEqZFq3k8d5kyVpbw3MHjDN7CL9RCCOB).
