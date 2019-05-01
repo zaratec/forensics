@@ -24,8 +24,8 @@ practice. Repetition is useful in learning and strengthening skills and we felt
 that this would provide an environment with such benefits. You can get started 
 below.
 
-1. [Setup and Platform](./platform.html)
-2. [Training & Tutorial](./training.html)
+1. [Setup and Platform](./platform.md)
+2. [Training & Tutorial](./training.md)
 
 
 -----
