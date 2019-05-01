@@ -24,6 +24,8 @@ The idea is to make a small multi-step environment that students can learn from,
 
 ## Image 1: NTFS, Ext3, FAT
 
+(Unfamiliar with these terms? [Here is a good resource link](https://fossbytes.com/fat32-vs-ntfs-vs-exfat-difference-three-file-systems/) to get brushed up!)
+
 ### Setup
 
 Follow [the setup instructions](./platform.html). After generation, you should have `hdd.img` and `flags.txt`
@@ -32,8 +34,6 @@ and the accompanying flag.
 
 ### NTFS
 #### Questions & Walkthrough
-
-(Unfamiliar with these terms? Here is a good resource link to get brushed up!)
 
 | Topic (NTFS)                  |  Description                                                       |
 | ------------                  |-----------------                                                   |
