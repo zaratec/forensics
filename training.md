@@ -107,6 +107,7 @@ TBD
 
 | Part 1: Basic information     | (ext3) Md5sum, File System Type, Block Size, Inode Size?           |
 | Part 2: Strings               | (ext3) By a Thread: It's in there somewhere!                       |
+| Part 3: Windows Registry      | (ext3) Dig through the hive - where's the flag?                    |
 
 #### Solutions
 
@@ -125,6 +126,14 @@ Ext3 block + inode size:
 `
 $ strings [file/partition]
 `
+
+**Part 3**
+
+```
+Use Python libraries (hivex or python-registry) or tools (AccessData Registry Viewer)
+to view the registry contents and find the flag.
+```
+
 
 ## Image 2: Android Memory [memtutorial.mem](https://drive.google.com/open?id=1lMeYoRuGCsSjOfiYNUK4ieR8HUIX0elW)
 
